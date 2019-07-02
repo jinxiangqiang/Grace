@@ -1,0 +1,118 @@
+.container-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 599;
+  will-change: transform;
+  box-shadow: -4px 0 10px 4px rgba(0, 0, 0, 0.07);
+}
+.container-height {
+  max-height: 100%;
+  overflow: hidden;
+}
+.container-height.container-scrollable {
+  max-height: 100%;
+  overflow: hidden;
+}
+.container-fill {
+  height: 100%;
+  width: 100%;
+}
+.container-fill > .container-fill {
+  flex: 1 1 0;
+  position: relative;
+}
+.container-column,
+.container-row {
+  display: flex;
+  max-height: 100%;
+  width: 100%;
+}
+.container-column > .container-fill,
+.container-row > .container-fill {
+  flex: 1 1 0;
+  position: relative;
+}
+.container-column {
+  flex-direction: column;
+}
+.container-row {
+  flex-direction: row;
+  height: auto;
+}
+.container-row > .container-fill {
+  height: auto;
+  width: auto;
+}
+.container-align-end {
+  align-items: flex-end;
+}
+.container-align-center {
+  align-items: center;
+}
+.container-direction-column > .container-align-center {
+  text-align: center;
+}
+.container-align-start {
+  align-items: flex-start;
+}
+.container-justified {
+  justify-content: space-around;
+}
+.container-justify-end {
+  justify-content: flex-end;
+}
+.container-justify-center {
+  justify-content: center;
+}
+.container-justify-start {
+  justify-content: flex-start;
+}
+.container-scrollable {
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  /*ios滚动区域必加属性*/
+}
+.container-scrollable:before,
+.container-scrollable:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  width: 1px;
+}
+.container-scrollable:before {
+  bottom: -1px;
+}
+.container-scrollable:after {
+  top: -1px;
+}
+.container-list {
+  overflow: hidden !important;
+  height: auto !important;
+}
+.container-list .am-list-view-scrollview-content {
+  position: relative !important;
+}
+.container-hidden {
+  overflow: hidden !important;
+}
+.container-props {
+  width: 100%;
+}
+.container-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.container-body .am-tabs-horizontal .am-tabs-pane-wrap-active {
+  height: 100%;
+}
+/*# sourceMappingURL=_container.css.map */

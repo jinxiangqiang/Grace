@@ -1,0 +1,64 @@
+<div class="alain-default__header-logo">
+  <a [routerLink]="['/']" class="alain-default__header-logo-link">
+    <img src="./assets/logo-full.svg" alt="{{settings.app.name}}" class="hidden-mobile"/>
+    <img src="./assets/logo.svg" alt="{{settings.app.name}}" class="hidden-pc"/>
+<!--    <img class="alain-default__header-logo-expanded" src="./assets/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />-->
+<!--    <img class="alain-default__header-logo-collapsed" src="./assets/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />-->
+  </a>
+</div>
+<div class="alain-default__nav-wrap">
+  <ul class="alain-default__nav">
+    <!-- Menu -->
+    <li>
+      <div class="alain-default__nav-item" (click)="toggleCollapsedSidebar()">
+        <i nz-icon nzType="menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+      </div>
+    </li>
+    <li>
+        <nz-dropdown>
+          <a nz-dropdown class="alain-default__nav-item size-18"> <span class="hidden-mobile">招商管理系统</span> <i nz-icon type="down"></i> </a>
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item>
+              <a>数据中心</a>
+            </li>
+            <li nz-menu-item>
+              <a>协同办公系统</a>
+            </li>
+            <li nz-menu-item>
+              <a>招商管理系统</a>
+            </li>
+          </ul>
+        </nz-dropdown>
+    </li>
+  </ul>
+  <div class="alain-default__search"></div>
+  <ul class="alain-default__nav">
+    <!-- Notify -->
+    <li>
+      <header-notify></header-notify>
+    </li>
+    <!-- App Icons -->
+    <li class="hidden-mobile">
+      <header-icon></header-icon>
+    </li>
+    <!-- Settings -->
+    <li class="hidden-mobile">
+      <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
+        <div class="alain-default__nav-item" nz-dropdown>
+          <i nz-icon nzType="setting"></i>
+        </div>
+        <div nz-menu style="width:200px;">
+          <div nz-menu-item>
+            <header-fullscreen></header-fullscreen>
+          </div>
+          <div nz-menu-item>
+            <header-storage></header-storage>
+          </div>
+        </div>
+      </nz-dropdown>
+    </li>
+    <li>
+      <header-user></header-user>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,98 @@
+<div class="container-fill container-column">
+  <div class="alain-default__content-title">
+    <div class="container-fill container-row container-align-center">
+      <div class="container-fill">
+        <h1> 设置中心
+          <small>
+            <nz-breadcrumb>
+              <nz-breadcrumb-item>
+                <a>应用</a>
+              </nz-breadcrumb-item>
+              <nz-breadcrumb-item>
+                设置中心
+              </nz-breadcrumb-item>
+            </nz-breadcrumb>
+          </small>
+        </h1>
+      </div>
+      <div>
+        <button nz-button nzType="primary">创建应用</button>
+        <button nz-button nzType="default">编辑应用</button>
+      </div>
+    </div>
+  </div>
+  <div class="content container-scrollable padding">
+    <div class="card-list">
+      <nz-card nzTitle="应用基础配置" class="card-nested">
+        <div nz-row nzType="flex" [nzGutter]="16" nzAlign='stretch'>
+          <div nz-col nzXs="24" nzMd="12" nzLg='8'>
+            <nz-card nzType="inner" nzTitle="组件配置">
+              <div class="container-fill container-column">
+                <div class="container-fill">
+                  <p>可以配置应用的组件；</p>
+                  <p>可以配置应用中导航区域的菜单项；</p>
+                </div>
+                <div class="mt15">
+                  <button nzType="primary" nz-button>进入配置</button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+          <div nz-col nzXs="24" nzMd="12" nzLg='8'>
+            <nz-card nzType="inner" nzTitle="数据目录">
+              <div class="container-fill container-column">
+                <div class="container-fill">
+                  <p>可以配置应用的数据目录；</p>
+                </div>
+                <div class="mt15">
+                  <button nzType="primary" nz-button>进入配置</button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+          <div nz-col nzXs="24" nzMd="12" nzLg='8'>
+            <nz-card nzType="inner" nzTitle="标签配置">
+              <div class="container-fill container-column">
+                <div class="container-fill">
+                  <p>可以配置系统的各种标签；</p>
+                </div>
+                <div class="mt15">
+                  <button nzType="primary" nz-button>进入配置</button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+        </div>
+      </nz-card>
+      <nz-card nzTitle="应用日志分析" class="card-nested">
+        <div nz-row nzType="flex" [nzGutter]="24" nzAlign='stretch'>
+          <div nz-col nzXs="24" nzMd="12" nzLg='8'>
+            <nz-card nzType="inner" nzTitle="参数配置">
+              <div class="container-fill container-column">
+                <div class="container-fill">
+                  <p>应用的全局参数配置，比如应用的初始化参数、邮件发送参数、附件上传参数等；</p>
+                </div>
+                <div class="mt15">
+                  <button nzType="primary" nz-button>进入配置</button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+          <div nz-col nzXs="24" nzMd="12" nzLg='8'>
+            <nz-card nzType="inner" nzTitle="操作日志">
+              <div class="container-fill container-column">
+                <div class="container-fill">
+                  <p>可以查看应用的所有操作日志；</p>
+                  <p>可以查看应用的错误日志；</p>
+                </div>
+                <div class="mt15">
+                  <button nzType="primary" nz-button [routerLink]="['application']">进入配置</button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.card-list{
+   .card-nested:last-child{
+     margin-bottom:0
+   }
+}
+
+.card-nested{
+  > .ant-card-body{
+    padding-bottom: 0;
+    overflow: hidden;
+    .ant-card{
+      height: calc(~'100%' - @card-padding-base);
+      margin-bottom: @card-padding-base;
+    }
+  }
+  .ant-row-flex{
+    .ant-card{
+      display: flex;
+      flex-direction: column;
+      .ant-card-body{
+        height: calc(100% - 48px);
+      }
+    }
+  }
+}

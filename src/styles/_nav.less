@@ -1,0 +1,67 @@
+.rec-default__nav {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: @alain-default-header-hg;
+  bottom: 0;
+  z-index: 19;
+  width: 80px;
+  transition: all .2s;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .reco {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .ant-menu-inline-collapsed > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+    padding: 0 !important;
+    margin: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .anticon, p {
+      line-height: 1;
+    }
+
+    .anticon {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.ant-menu-dark.ant-menu-submenu-popup {
+  background-color: #ffffff;
+
+  .ant-menu {
+    background-color: #ffffff;
+
+    .ant-menu-item {
+      color: #000000;
+
+      &.ant-menu-item-selected {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.alain-default__nav {
+  li {
+    padding: 0 4px;
+
+    a {
+      padding: 8px 4px
+    }
+  }
+}

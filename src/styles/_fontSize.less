@@ -1,0 +1,11 @@
+/*字体 12px-32px*/
+.cont(@count) when (@count > 10) {
+  .cont((@count - 2));
+
+  .size-@{count} {
+    font-size: (1px * @count);
+  }
+}
+
+.cont(32);
+/*字体 12px-32px end*/

@@ -1,0 +1,37 @@
+// 可以通过 https://ng-alain.github.io/ng-alain/ 获取主题参数代码
+// The theme paraments can be generated at https://ng-alain.github.io/ng-alain/
+@defaultSize: 16px;
+@xs: 8px;
+@sm: 16px;
+@lg: 24px;
+@xl: 32px;
+@primary-color: #2e68aa;
+@alain-default-header-bg: #2e68aa;
+@alain-default-aside-nav-text-hover-color: #2e68aa;
+@alain-default-aside-nav-selected-text-color: #2e68aa;
+@alain-default-content-padding: @defaultSize;
+@card-padding-base: @defaultSize;
+.alain-default__header-logo, .alain-default__collapsed .alain-default__header-logo{
+  width: auto;
+  margin-left: 0;
+  img{
+    height: 40px;
+  }
+}
+.alain-default__content-title{
+  padding-top: @xs;
+  padding-bottom: @xs;
+  margin-bottom: 0;
+  h1{
+    margin-bottom: 0;
+  }
+}
+.rec-default__nav{
+  background-color: @primary-color / .8;
+  .ant-menu {
+    background-color: @primary-color / .8;
+  }
+  .ant-menu-dark .ant-menu-submenu-selected, .ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background-color: @primary-color / .98;
+  }
+}
