@@ -26,13 +26,13 @@ import * as $ from 'jquery';
 })
 export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   loadingTimeout;
-
-  @Input() width;
-
-  @Input() height;
-
+  /*设置多少宽度出现滚动条*/
+  @Input() width = '1000px';
+  /*设置多少高度出现滚动条*/
+  @Input() height = '601px';
+  /*设置禁用滚动条*/
   @Input() noScroll = false;
-
+  /*设置默认分页*/
   @Input() pageSize = 15;
 
   resize$ = new Subject<void>();
@@ -47,8 +47,12 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
+    if (this.height !== '601px') {
+      this.noScroll = true;
+      this.table.nzScroll = { x: this.width, y: this.height };
+    }
     if (!this.noScroll) {
-      this.table.nzScroll = { x: '1000px', y: '600px' };
+      this.table.nzScroll = { x: this.width, y: this.height };
       this.resize$.pipe(debounceTime(300)).subscribe(() => {
         this.setHeight();
       });
@@ -68,6 +72,7 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
     if (!this.noScroll) {
       this.setHeight();
     }
+    /*超时关闭蒙层提示网络超时，封装数据返回后清除延时*/
     this.loadingTimeout = setTimeout(() => {
       this.message.create('error', `加载超时！请检查您网络~`);
       this.table.nzLoading = false;
@@ -76,6 +81,7 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
+    /*清除延时以及窗口监听*/
     clearTimeout(this.loadingTimeout);
     if (!this.noScroll) {
       this.resize$.complete();
@@ -84,12 +90,13 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setHeight() {
+    /*获取父容器高度减去分页以及头部的高度等于固定的表格高度*/
     this.height = `${
-      $(this.el.nativeElement).parent().height() -
-      $(this.el.nativeElement).find('.ant-table-header table').outerHeight(true) -
-      $(this.el.nativeElement).find('.ant-table-pagination').outerHeight(true)
-    }px`;
-    this.table.nzScroll = Object.assign(this.table.nzScroll, { x: this.width, y: this.height });
+    $(this.el.nativeElement).parent().height() -
+    $(this.el.nativeElement).find('.ant-table-header table').outerHeight(true) -
+    $(this.el.nativeElement).find('.ant-table-pagination').outerHeight(true)
+      }px`;
+    this.table.nzScroll = { ...this.table.nzScroll, x: this.width, y: this.height };
     this.cdr.detectChanges();
   }
 }

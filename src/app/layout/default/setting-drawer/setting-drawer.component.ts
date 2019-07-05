@@ -151,7 +151,7 @@ const DEFAULT_VARS = {
   'alain-default-content-padding': {
     label: '内边距',
     type: 'px',
-    default: '16px',
+    default: '24px',
     min: 0,
     max: 128,
     step: 8,
@@ -201,6 +201,7 @@ const DEFAULT_VARS = {
   // tslint:disable-next-line:component-selector
   selector: 'setting-drawer',
   templateUrl: './setting-drawer.component.html',
+  // tslint:disable-next-line: no-host-metadata-property
   host: {
     '[class.setting-drawer]': 'true',
   },

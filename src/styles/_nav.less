@@ -1,28 +1,37 @@
 .rec-default__nav {
   position: fixed;
-  display: block;
-  left: 0;
   top: @alain-default-header-hg;
   bottom: 0;
+  left: 0;
   z-index: 19;
+  display: block;
   width: 80px;
-  transition: all .2s;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: @nav-back;
+  transition: all .2s;
   -webkit-overflow-scrolling: touch;
 
   .reco {
-    font-size: 24px;
     font-weight: bold;
+    font-size: 24px;
+  }
+
+  .ant-menu {
+    background-color: @nav-back;
+  }
+
+  .ant-menu-dark .ant-menu-submenu-selected, .ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background-color: @nav-back-on;
   }
 
   .ant-menu-inline-collapsed > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
-    padding: 0 !important;
-    margin: 0;
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 80px;
+    margin: 0;
+    padding: 0 !important;
     text-align: center;
 
     .anticon, p {
@@ -30,8 +39,8 @@
     }
 
     .anticon {
-      font-size: 22px;
       font-weight: bold;
+      font-size: 22px;
     }
 
     p {
@@ -41,16 +50,16 @@
 }
 
 .ant-menu-dark.ant-menu-submenu-popup {
-  background-color: #ffffff;
+  background-color: #fff;
 
   .ant-menu {
-    background-color: #ffffff;
+    background-color: #fff;
 
     .ant-menu-item {
-      color: #000000;
+      color: #000;
 
       &.ant-menu-item-selected {
-        color: #ffffff;
+        color: #fff;
       }
     }
   }
@@ -64,4 +73,9 @@
       padding: 8px 4px
     }
   }
+}
+
+.reco-nav-title {
+  padding: 24px;
+  font-size: 18px;
 }

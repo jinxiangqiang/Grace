@@ -3,10 +3,10 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 @Component({
   selector: 'header-icon',
   template: `
-    <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
-      <div class="alain-default__nav-item" nz-dropdown>
-        <i nz-icon nzType="appstore"></i>
-      </div>
+    <div class="alain-default__nav-item" nz-dropdown  [nzDropdownMenu]="menuTpl" (nzVisibleChange)="change()">
+      <i nz-icon nzType="appstore"></i>
+    </div>
+    <nz-dropdown-menu nzTrigger="click" nzPlacement="bottomRight" #menuTpl="nzDropdownMenu">
       <div nz-menu class="wd-xl animated jello">
         <nz-spin [nzSpinning]="loading" [nzTip]="'正在读取数据...'">
           <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="app-icons">
@@ -45,7 +45,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
           </div>
         </nz-spin>
       </div>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

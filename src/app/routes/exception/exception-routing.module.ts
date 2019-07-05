@@ -7,10 +7,10 @@ import { Exception500Component } from './500.component';
 import { ExceptionTriggerComponent } from './trigger.component';
 
 const routes: Routes = [
-  { path: '403', component: Exception403Component },
-  { path: '404', component: Exception404Component },
-  { path: '500', component: Exception500Component },
-  { path: 'trigger', component: ExceptionTriggerComponent },
+  { path: '403', component: Exception403Component, outlet: 'content' },
+  { path: '404', component: Exception404Component, outlet: 'content'},
+  { path: '500', component: Exception500Component, outlet: 'content' },
+  { path: 'trigger', component: ExceptionTriggerComponent, outlet: 'content' },
 ];
 
 @NgModule({

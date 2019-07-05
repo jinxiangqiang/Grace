@@ -15,8 +15,8 @@
       </div>
     </li>
     <li>
-        <nz-dropdown>
-          <a nz-dropdown class="alain-default__nav-item size-18"> <span class="hidden-mobile">招商管理系统</span> <i nz-icon type="down"></i> </a>
+        <div nz-dropdown nzPlacement="bottomRight" class="alain-default__nav-item size-18" [nzDropdownMenu]="menuTpl"><span class="hidden-mobile">招商管理系统</span> <i nz-icon type="down"></i></div>
+        <nz-dropdown-menu #menuTpl="nzDropdownMenu">
           <ul nz-menu nzSelectable>
             <li nz-menu-item>
               <a>数据中心</a>
@@ -28,7 +28,7 @@
               <a>招商管理系统</a>
             </li>
           </ul>
-        </nz-dropdown>
+        </nz-dropdown-menu>
     </li>
   </ul>
   <div class="alain-default__search"></div>
@@ -43,11 +43,11 @@
     </li>
     <!-- Settings -->
     <li class="hidden-mobile">
-      <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
-        <div class="alain-default__nav-item" nz-dropdown>
-          <i nz-icon nzType="setting"></i>
-        </div>
-        <div nz-menu style="width:200px;">
+      <div nz-dropdown nzPlacement="bottomRight" class="alain-default__nav-item" [nzDropdownMenu]="settingsMenu">
+        <i nz-icon nzType="setting"></i>
+      </div>
+      <nz-dropdown-menu #settingsMenu="nzDropdownMenu">
+        <div nz-menu style="width:150px;">
           <div nz-menu-item>
             <header-fullscreen></header-fullscreen>
           </div>
@@ -55,7 +55,7 @@
             <header-storage></header-storage>
           </div>
         </div>
-      </nz-dropdown>
+      </nz-dropdown-menu>
     </li>
     <li>
       <header-user></header-user>

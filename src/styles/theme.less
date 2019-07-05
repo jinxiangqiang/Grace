@@ -11,6 +11,8 @@
 @alain-default-aside-nav-selected-text-color: #2e68aa;
 @alain-default-content-padding: @defaultSize;
 @card-padding-base: @defaultSize;
+@nav-back: @primary-color / .8;
+@nav-back-on: @primary-color / .98;
 .alain-default__header-logo, .alain-default__collapsed .alain-default__header-logo{
   width: auto;
   margin-left: 0;
@@ -19,19 +21,11 @@
   }
 }
 .alain-default__content-title{
+  margin-bottom: 0;
   padding-top: @xs;
   padding-bottom: @xs;
-  margin-bottom: 0;
   h1{
     margin-bottom: 0;
   }
 }
-.rec-default__nav{
-  background-color: @primary-color / .8;
-  .ant-menu {
-    background-color: @primary-color / .8;
-  }
-  .ant-menu-dark .ant-menu-submenu-selected, .ant-menu.ant-menu-dark .ant-menu-item-selected {
-    background-color: @primary-color / .98;
-  }
-}
+

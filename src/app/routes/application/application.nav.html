@@ -1,0 +1,15 @@
+<div class="alain-default__aside-inner">
+  <div class="reco-nav-title">
+    <i class="reco reco-apply margin-right-xs"></i>应用管理
+  </div>
+  <ul nz-menu nzMode="inline">
+    <li nz-menu-item [routerLink]="['/index/application',{outlets:{content: ['setting']}}]" nzMatchRouter>
+      <i nz-icon nzType="appstore"></i>
+      设置中心
+    </li>
+    <li nz-menu-item [routerLink]="['/index/application',{outlets:{content: ['authorization']}}]" nzMatchRouter>
+      <i nz-icon nzType="rocket"></i>
+      系统角色授权
+    </li>
+  </ul>
+</div>

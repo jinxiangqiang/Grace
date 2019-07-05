@@ -38,9 +38,9 @@ export class ModalComponent implements OnInit, OnDestroy {
   @Output()
   close = new EventEmitter<ComponentRef<any>>();
 
-  @ViewChild('container', { read: ViewContainerRef })
+  @ViewChild('container', { read: ViewContainerRef, static: false })
   containerRef: ViewContainerRef;
-  @ViewChild('template', { read: TemplateRef })
+  @ViewChild('template', { read: TemplateRef, static: false })
   templateRef: TemplateRef<any>;
 
   get title() {

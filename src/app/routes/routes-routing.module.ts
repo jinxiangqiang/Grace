@@ -7,28 +7,24 @@ import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // dashboard pages
-import { ApplicationComponent } from './application/application.component';
-import { ApplicationNav } from './application/application.nav';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
-import { AuthorizationComponent } from './authorization/authorization.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
   {
-    path: '',
+    path: 'index',
     component: LayoutDefaultComponent,
     canActivate: [SimpleGuard],
     children: [
       { path: '', redirectTo: 'application', pathMatch: 'full' },
-      { path: 'application_nav', component: ApplicationNav, data: { title: '应用' } },
-      { path: 'application', component: ApplicationComponent, data: { title: '设置中心', titleI18n: '设置中心' } },
-      { path: 'authorization', component: AuthorizationComponent, data: { title: '系统角色授权', titleI18n: '系统角色授权' } },
+      { path: 'application', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule) },
       { path: 'exception', loadChildren: './exception/exception.module#ExceptionModule' },
-    ],
+    ]
   }, {
     path: 'fullscreen',
     component: LayoutFullScreenComponent,
@@ -45,8 +41,8 @@ const routes: Routes = [
     ],
   },
   // 单页不包裹Layout
-  { path: 'callback/:type', component: CallbackComponent },
-  { path: '**', redirectTo: 'exception/404' }];
+  { path: 'callback/:type', component: CallbackComponent, outlet: 'content' },
+  { path: '**', redirectTo: '/index/exception/(content:404)' }];
 
 @NgModule({
   imports: [

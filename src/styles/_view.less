@@ -19,15 +19,18 @@
 
 .alain-default__content{
   position: absolute;
-  left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  top: 0;
+  left: 0;
   margin: 0;
+  transform: translateZ(0);
+  transition:all .2s;
+  will-change: margin-left;
 }
 .alain-default__content-title{
- margin-left: 0;
  margin-right: 0;
+ margin-left: 0;
 }
 
 .content{
@@ -41,7 +44,8 @@
     }
     .alain-default__aside{
       left: 0;
-      width: 0;
+      width: 200px;
+      transform: translateX(-100%);
     }
   }
   .alain-default__content {

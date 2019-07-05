@@ -15,9 +15,6 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-  form: FormGroup;
-  error = '';
-  type = 0;
 
   constructor(
     fb: FormBuilder,
@@ -57,17 +54,20 @@ export class UserLoginComponent implements OnDestroy {
   get captcha() {
     return this.form.controls.captcha;
   }
+  form: FormGroup;
+  error = '';
+  type = 0;
+
+  // #region get captcha
+
+  count = 0;
+  interval$: any;
 
   // #endregion
 
   switch(ret: any) {
     this.type = ret.index;
   }
-
-  // #region get captcha
-
-  count = 0;
-  interval$: any;
 
   getCaptcha() {
     if (this.mobile.invalid) {
@@ -109,7 +109,7 @@ export class UserLoginComponent implements OnDestroy {
       time: +new Date(),
     };
     this.tokenService.set(user);
-    this.router.navigateByUrl('dashboard');
+    this.router.navigateByUrl('index');
     // // 默认配置中对所有HTTP请求都会强制 [校验](https://ng-alain.com/auth/getting-started) 用户 Token
     // // 然一般来说登录请求不需要校验，因此可以在请求URL加上：`/login?_allow_anonymous=true` 表示不触发用户 Token 校验
     // this.http

@@ -17,9 +17,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { updateHostClass } from '@delon/util';
 import { SettingsService } from '@delon/theme';
-
-import { environment } from '@env/environment';
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
+
 
 @Component({
   selector: 'layout-default',
@@ -27,7 +26,7 @@ import { SettingDrawerComponent } from './setting-drawer/setting-drawer.componen
 })
 export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-  @ViewChild('settingHost', { read: ViewContainerRef })
+  @ViewChild('settingHost', { read: ViewContainerRef, static: false })
   private settingHost: ViewContainerRef;
   isFetching = false;
 
@@ -40,7 +39,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     private renderer: Renderer2,
     @Inject(DOCUMENT) private doc: any,
   ) {
-    // scroll to top in change page
+    // 滚动到“更改”页的顶部
     router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(evt => {
       if (!this.isFetching && evt instanceof RouteConfigLoadStart) {
         this.isFetching = true;
@@ -75,7 +74,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngAfterViewInit(): void {
     // 仅为开发人员设置组件
-    // if (!environment.production) {
+    // if (true) {
     //   setTimeout(() => {
     //     const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
     //     this.settingHost.createComponent(settingFactory);

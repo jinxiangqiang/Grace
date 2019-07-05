@@ -2,7 +2,7 @@ import { enableProdMode, ViewEncapsulation } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { environment } from '@env/environment';
 
 import { preloaderFinished } from '@delon/theme';
 preloaderFinished();
@@ -17,15 +17,15 @@ const bootstrap = () => {
   return platformBrowserDynamic().bootstrapModule(AppModule, {
     defaultEncapsulation: ViewEncapsulation.Emulated,
   }).then((res) => {
-    if ((<any>window).appBootstrap) {
-      (<any>window).appBootstrap();
+    if ((window as any).appBootstrap) {
+      (window as any).appBootstrap();
     }
     return res;
   });
 };
 
 if (environment.hmr) {
-  if (module[ 'hot' ]) {
+  if (module['hot']) {
     hmrBootstrap(module, bootstrap);
   } else {
     console.error('HMR is not enabled for webpack-dev-server!');

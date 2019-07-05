@@ -1,12 +1,12 @@
 {
   "app": {
-    "name": "Alain",
-    "description": "Ng-zorro admin panel front-end framework"
+    "name": "Grace",
+    "description": "基于Ng-zorro管理面板前端框架"
   },
   "user": {
     "name": "Admin",
     "avatar": "./assets/tmp/img/avatar.jpg",
-    "email": "cipchk@qq.com"
+    "email": "2410585813@qq.com"
   },
   "menu": [
     {

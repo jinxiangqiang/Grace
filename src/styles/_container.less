@@ -3,18 +3,18 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 599;
   width: 100%;
   height: 100%;
-  background-color: @component-background;
   overflow: hidden;
-  z-index: 599;
-  will-change: transform;
+  background-color: @component-background;
   box-shadow: -4px 0 10px 4px rgba(0, 0, 0, 0.07);
+  will-change: transform;
 }
 
 .@{container-prefix}-height {
-  max-height: 100%;
   height: 100%;
+  max-height: 100%;
   overflow: hidden;
   &.@{container-prefix}-scrollable {
     max-height: 100%;
@@ -23,24 +23,24 @@
 }
 
 .@{container-prefix}-fill {
-  height: 100%;
   width: 100%;
+  height: 100%;
 
   & > & {
-    flex: 1 1 0;
     position: relative;
+    flex: 1 1 0;
   }
 }
 
 .@{container-prefix}-column,
 .@{container-prefix}-row {
   display: flex;
-  max-height: 100%;
   width: 100%;
+  max-height: 100%;
 
   > .@{container-prefix}-fill {
-    flex: 1 1 0;
     position: relative;
+    flex: 1 1 0;
   }
 }
 
@@ -53,8 +53,8 @@
   height: auto;
 
   > .@{container-prefix}-fill {
-    height: auto;
     width: auto;
+    height: auto;
   }
 }
 
@@ -94,28 +94,28 @@
   max-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /*ios滚动区域必加属性*/
+  -webkit-overflow-scrolling: touch; /* ios滚动区域必加属性 */
 
-  &:before,
-  &:after {
-    content: "";
-    height: 1px;
+  &::before,
+  &::after {
     position: absolute;
     width: 1px;
+    height: 1px;
+    content: "";
   }
 
-  &:before {
+  &::before {
     bottom: -1px;
   }
 
-  &:after {
+  &::after {
     top: -1px;
   }
 }
 
 .@{container-prefix}-list {
-  overflow: hidden !important;
   height: auto !important;
+  overflow: hidden !important;
 
   .am-list-view-scrollview-content {
     position: relative !important;
@@ -133,9 +133,9 @@
 .@{container-prefix}-body {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
 
   .am-tabs-horizontal .am-tabs-pane-wrap-active {
     height: 100%;
