@@ -26,6 +26,7 @@ import * as $ from 'jquery';
 })
 export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   loadingTimeout;
+  sizeTime;
   /*设置多少宽度出现滚动条*/
   @Input() width = '1000px';
   /*设置多少高度出现滚动条*/
@@ -33,7 +34,16 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   /*设置禁用滚动条*/
   @Input() noScroll = false;
   /*设置默认分页*/
-  @Input() pageSize = 15;
+  @Input()
+  set pageSize(val: number){
+    if(!val) {
+      val = parseInt(localStorage.getItem('pageSize'));
+      this.table.nzPageSize = val;
+    } else {
+      this.table.nzPageSize = val;
+    }
+    this.cdr.detectChanges();
+  };
 
   resize$ = new Subject<void>();
 
@@ -43,10 +53,11 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   constructor(@Inject(DOCUMENT) private document: any, private el: ElementRef, private table: NzTableComponent, private cdr: ChangeDetectorRef, private message: NzMessageService) {
-    this.table.nzPageSize = this.pageSize;
+
   }
 
   ngOnInit(): void {
+
     if (this.height !== '601px') {
       this.noScroll = true;
       this.table.nzScroll = { x: this.width, y: this.height };
@@ -66,6 +77,11 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
       nzShowSizeChanger: true,
       nzShowPagination: true,
     });
+    this.table.nzPageSizeChange.subscribe(size => this.setPageSize(size));
+  }
+
+  setPageSize(size): void {
+    localStorage.setItem('pageSize', size)
   }
 
   ngAfterViewInit(): void {
@@ -90,6 +106,22 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setHeight() {
+    clearTimeout(this.sizeTime);
+    this.getHeight();
+    /*如果可视区域小于1366将表格置为small*/
+    if (document.body.offsetWidth <= 1366) {
+      this.table.nzSize = 'small';
+    } else {
+      this.table.nzSize = 'default';
+    }
+    this.cdr.detectChanges();
+    this.sizeTime = setTimeout(() => {
+      /*防止因为窗体改变调整table大小后导致高度计算错误*/
+      this.getHeight();
+      this.cdr.detectChanges();
+    }, 300);
+  }
+  getHeight() {
     /*获取父容器高度减去分页以及头部的高度等于固定的表格高度*/
     this.height = `${
     $(this.el.nativeElement).parent().height() -
@@ -97,6 +129,5 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
     $(this.el.nativeElement).find('.ant-table-pagination').outerHeight(true)
       }px`;
     this.table.nzScroll = { ...this.table.nzScroll, x: this.width, y: this.height };
-    this.cdr.detectChanges();
   }
 }
