@@ -27,6 +27,7 @@ import * as $ from 'jquery';
 export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   loadingTimeout;
   sizeTime;
+  pageSizeNum = parseInt(localStorage.getItem('pageSize')) || 15;
   /*设置多少宽度出现滚动条*/
   @Input() width = '1000px';
   /*设置多少高度出现滚动条*/
@@ -37,12 +38,10 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   @Input()
   set pageSize(val: number){
     if(!val) {
-      val = parseInt(localStorage.getItem('pageSize'));
-      this.table.nzPageSize = val;
+      this.pageSizeNum = parseInt(localStorage.getItem('pageSize'));
     } else {
-      this.table.nzPageSize = val;
+      this.pageSizeNum = val;
     }
-    this.cdr.detectChanges();
   };
 
   resize$ = new Subject<void>();
@@ -57,7 +56,6 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-
     if (this.height !== '601px') {
       this.noScroll = true;
       this.table.nzScroll = { x: this.width, y: this.height };
@@ -76,8 +74,10 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
       nzShowQuickJumper: true,
       nzShowSizeChanger: true,
       nzShowPagination: true,
+      nzPageSize: this.pageSizeNum
     });
     this.table.nzPageSizeChange.subscribe(size => this.setPageSize(size));
+    this.table.updateFrontPaginationDataIfNeeded();
   }
 
   setPageSize(size): void {
@@ -119,6 +119,7 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
       /*防止因为窗体改变调整table大小后导致高度计算错误*/
       this.getHeight();
       this.cdr.detectChanges();
+
     }, 300);
   }
   getHeight() {
