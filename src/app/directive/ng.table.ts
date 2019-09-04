@@ -17,9 +17,6 @@ import { debounceTime } from 'rxjs/operators';
 
 import { NzMessageService, NzTableComponent } from 'ng-zorro-antd';
 
-import * as $ from 'jquery';
-
-
 @Directive({
   selector: 'nz-table[default-table]',
   exportAs: 'default-table',
@@ -124,11 +121,11 @@ export class BiTableDirective implements OnInit, OnDestroy, AfterViewInit {
   }
   getHeight() {
     /*获取父容器高度减去分页以及头部的高度等于固定的表格高度*/
-    this.height = `${
-    $(this.el.nativeElement).parent().height() -
-    $(this.el.nativeElement).find('.ant-table-header table').outerHeight(true) -
-    $(this.el.nativeElement).find('.ant-table-pagination').outerHeight(true)
-      }px`;
-    this.table.nzScroll = { ...this.table.nzScroll, x: this.width, y: this.height };
+    // this.height = `${
+    // $(this.el.nativeElement).parent().height() -
+    // $(this.el.nativeElement).find('.ant-table-header table').outerHeight(true) -
+    // $(this.el.nativeElement).find('.ant-table-pagination').outerHeight(true)
+    //   }px`;
+    // this.table.nzScroll = { ...this.table.nzScroll, x: this.width, y: this.height };
   }
 }

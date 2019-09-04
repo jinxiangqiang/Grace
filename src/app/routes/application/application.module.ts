@@ -7,13 +7,14 @@ import { ApplicationNav } from './application.nav';
 import { ApplicationComponent } from './application.component';
 import { AuthorizationComponent } from './authorization.component';
 import { BiDirectiveModule } from '../../directive/directive.module';
+import { ViewsModule } from '@core/components/views';
 
 
 const COMPONENTS = [ApplicationNav, ApplicationComponent, AuthorizationComponent];
 const COMPONENTS_NOROUNT = [];
 
 @NgModule({
-  imports: [SharedModule, ApplicationRoutingModule, BiDirectiveModule],
+  imports: [SharedModule, ApplicationRoutingModule, BiDirectiveModule, ViewsModule],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })

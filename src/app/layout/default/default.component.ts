@@ -74,12 +74,12 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngAfterViewInit(): void {
     // 仅为开发人员设置组件
-    // if (true) {
-    //   setTimeout(() => {
-    //     const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
-    //     this.settingHost.createComponent(settingFactory);
-    //   }, 22);
-    // }
+    if (true) {
+      setTimeout(() => {
+        const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
+        this.settingHost.createComponent(settingFactory);
+      }, 22);
+    }
   }
 
   ngOnInit() {

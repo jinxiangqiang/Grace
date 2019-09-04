@@ -1,6 +1,7 @@
 {
   "name": "ng-alain",
   "version": "8.0.0",
+  "license": "MIT",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk <cipchk@qq.com>",
   "repository": {
@@ -11,7 +12,6 @@
     "url": "https://github.com/ng-alain/ng-alain/issues"
   },
   "homepage": "https://ng-alain.com",
-  "license": "MIT",
   "keywords": [
     "delon",
     "antd",
@@ -24,8 +24,8 @@
     "ng": "ng",
     "start": "npm run color-less && ng serve -o",
     "hmr": "npm run color-less && ng serve -c=hmr",
-    "build": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
-    "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
+    "build": "npm run color-less && node --max_old_space_size=16384 --scripts-prepend-node-path ./node_modules/@angular/cli/bin/ng build --prod",
+    "analyze": "node --max_old_space_size=16384 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "tslint -p tsconfig.app.json -c tslint.json \"src/**/*.ts\" --fix",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
@@ -46,8 +46,6 @@
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
     "@antv/data-set": "^0.10.2",
-    "@antv/g2": "^3.5.3",
-    "@antv/g2-plugin-slider": "^2.1.1",
     "@delon/abc": "^8.2.0",
     "@delon/acl": "^8.2.0",
     "@delon/auth": "^8.2.0",
@@ -59,10 +57,9 @@
     "@delon/util": "^8.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@types/jquery": "^3.3.30",
     "ajv": "^6.10.0",
+    "classnames": "^2.2.6",
     "file-saver": "^2.0.1",
-    "jquery": "^3.4.1",
     "ng-zorro-antd": "^8.2.0",
     "ngx-countdown": "^3.2.0",
     "ngx-tinymce": "^7.0.0",

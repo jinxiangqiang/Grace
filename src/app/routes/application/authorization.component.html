@@ -1,4 +1,4 @@
-<div class="container-fill container-column">
+<views [direction]="'column'">
   <div class="alain-default__content-title">
     <h1> 系统角色授权
       <small>
@@ -13,7 +13,7 @@
       </small>
     </h1>
   </div>
-  <div class="content container-height">
+  <views [hidden]="true" class="padding">
     <nz-table
       #rowSelectionTable
       default-table
@@ -50,5 +50,5 @@
       </tr>
       </tbody>
     </nz-table>
-  </div>
-</div>
+  </views>
+</views>
